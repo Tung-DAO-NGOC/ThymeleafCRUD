@@ -1,0 +1,8 @@
+div.content {
+  padding-top: 50px;
+  column-gap: 40px;
+}
+
+li.nav-item:hover {
+  background-color: rgba(214, 194, 194, 0.404);
+}

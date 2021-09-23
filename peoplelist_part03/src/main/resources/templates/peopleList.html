@@ -1,0 +1,35 @@
+<html lang="en">
+  <head th:replace="template::Heading"></head>
+  <body>
+    <div th:replace="template::navBar"></div>
+    <div class="content" align="center">
+      <br />
+      <table class="table table-striped w-auto">
+        <thead class="bg-success text-white">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Job</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr th:each="person:${list}">
+            <td th:text="${person.id}">ID</td>
+            <td th:text="${person.name}">Name</td>
+            <td th:text="${person.job}">Job</td>
+            <td th:text="${person.gender}">Gender</td>
+            <td th:text="${person.email}">Email</td>
+            <td>
+              <a href="#" th:href="@{/person/view/{id}(id = ${person.id})}"
+                ><button type="button" class="btn-info">View</button></a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

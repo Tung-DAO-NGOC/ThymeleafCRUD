@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <person>
+    <id>1</id>
+    <name>Elsa Volke</name>
+    <job>Software Engineer IV</job>
+    <email>evolke0@oaic.gov.au</email>
+    <gender>Female</gender>
+  </person>
+  <person>
+    <id>2</id>
+    <name>Junia Cymper</name>
+    <job>Account Representative II</job>
+    <email>jcymper1@pinterest.com</email>
+    <gender>Male</gender>
+  </person>
+  <person>
+    <id>3</id>
+    <name>Valma Howlett</name>
+    <job>Programmer III</job>
+    <email>vhowlett2@java.com</email>
+    <gender>Female</gender>
+  </person>
+  <person>
+    <id>4</id>
+    <name>Fanechka Swinfen</name>
+    <job>Statistician I</job>
+    <email>fswinfen3@furl.net</email>
+    <gender>Male</gender>
+  </person>
+  <person>
+    <id>5</id>
+    <name>Florri Gyrgorcewicx</name>
+    <job>Environmental Specialist</job>
+    <email>fgyrgorcewicx4@netvibes.com</email>
+    <gender>Female</gender>
+  </person>
+  <person>
+    <id>6</id>
+    <name>Estel Bohler</name>
+    <job>Senior Cost Accountant</job>
+    <email>ebohler5@google.com.au</email>
+    <gender>Female</gender>
+  </person>
+  <person>
+    <id>7</id>
+    <name>Micky Najafian</name>
+    <job>Marketing Manager</job>
+    <email>mnajafian6@patch.com</email>
+    <gender>Female</gender>
+  </person>
+  <person>
+    <id>8</id>
+    <name>Maggi Padilla</name>
+    <job>Project Manager</job>
+    <email>mpadilla7@tuttocitta.it</email>
+    <gender>Male</gender>
+  </person>
+  <person>
+    <id>9</id>
+    <name>Marieann Walklate</name>
+    <job>Assistant Professor</job>
+    <email>mwalklate8@umich.edu</email>
+    <gender>Male</gender>
+  </person>
+  <person>
+    <id>10</id>
+    <name>Tasia O'Reilly</name>
+    <job>Assistant Manager</job>
+    <email>toreilly9@twitpic.com</email>
+    <gender>Male</gender>
+  </person>
+</dataset>

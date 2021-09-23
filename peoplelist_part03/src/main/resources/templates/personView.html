@@ -1,0 +1,34 @@
+<html lang="en">
+  <head th:replace="template::Heading"></head>
+  <body>
+    <div th:replace="template::navBar"></div>
+    <div class="content" align="center">
+      <br />
+      <h1>Person Infomation</h1>
+      <br />
+      <h2>Data Record ID: <span th:text="${person.id}"></span></h2>
+      <table class="table table-bordered table-hover w-auto table-hover table-info">
+        <tbody class="tbody">
+          <tr>
+            <th>Name</th>
+            <td th:text="${person.name}"></td>
+          </tr>
+          <tr>
+            <th>Job</th>
+            <td th:text="${person.job}"></td>
+          </tr>
+          <tr>
+            <th>Gender</th>
+            <td th:text="${person.gender}"></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td th:text="${person.email}"></td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+      <a th:href="@{/person}"><button>Return</button></a>
+    </div>
+  </body>
+</html>
