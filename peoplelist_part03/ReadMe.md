@@ -1,4 +1,4 @@
-# Phần 3: Đọc chi tiết data của một đối tượng
+# Phần 3: View data của một đối tượng trong bảng
 
 ## Mục lục
 
