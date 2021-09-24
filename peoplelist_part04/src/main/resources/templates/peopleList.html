@@ -1,0 +1,44 @@
+<html lang="en">
+  <head th:replace="template::Heading"></head>
+  <body>
+    <div th:replace="template::navBar"></div>
+    <div class="content" align="center">
+      <br />
+      <h1>List of People</h1>
+      <br />
+      <table class="table table-striped w-auto">
+        <thead class="thead bg-success text-white">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Job</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr th:each="person:${list}">
+            <td th:text="${person.id}">ID</td>
+            <td th:text="${person.name}">Name</td>
+            <td th:text="${person.job}">Job</td>
+            <td th:text="${person.gender}">Gender</td>
+            <td th:text="${person.email}">Email</td>
+            <td>
+              <a href="#" th:href="@{/person/edit/{id}(id = ${person.id})}"
+                ><button type="button" class="btn-warning">Edit</button></a
+              >
+            </td>
+            <td>
+              <a href="#" th:href="@{/person/delete/{id}(id = ${person.id})}"
+                ><button type="button" class="btn-danger">Delete</button></a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+      <a th:href="@{/person/create}"> <button type="button" class="btn btn-primary">Create new Person Data</button> </a>
+    </div>
+  </body>
+</html>

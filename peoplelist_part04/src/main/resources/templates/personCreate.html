@@ -1,0 +1,41 @@
+<html lang="en">
+  <head th:replace="template::Heading"></head>
+  <body>
+    <div th:replace="template::navBar"></div>
+    <div class="content" align="center">
+      <br />
+      <h1>Create new Person</h1>
+      <br />
+      <form th:action="@{/person/create}" th:object="${createdPerson}" method="POST">
+        <table class="table w-auto">
+          <tr>
+            <th>ID:</th>
+            <td><input type="number" required name="id" placeholder="ID of person"/></td>
+          </tr>
+          <tr>
+            <th>Name:</th>
+            <td><input type="text" required name="name" placeholder="Name of person"/></td>
+          </tr>
+          <tr>
+            <th>Job:</th>
+            <td><input type="text" required name="job" placeholder="Job title"/></td>
+          </tr>
+          <tr>
+            <th>Gender:</th>
+            <td>
+                <input class="form-check-input" required type="radio" name="gender" value="Male">Male</input>
+                &nbsp;&nbsp;&nbsp;
+                <input class="form-check-input" required type="radio" name="gender" value="Female">Female</input>
+            </td>
+          </tr>
+          <tr>
+            <th>Email:</th>
+            <td><input type="email" required name="email" placeholder="Email address"/></td>
+          </tr>
+        </table>
+        <br />
+        <button type="sumbit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

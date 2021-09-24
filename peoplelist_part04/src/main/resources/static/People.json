@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Nessi Navarijo",
+    "job": "GIS Technical Architect",
+    "email": "nnavarijo0@marriott.com",
+    "gender": "Male"
+  },
+  {
+    "id": 2,
+    "name": "Mackenzie Emburey",
+    "job": "Payment Adjustment Coordinator",
+    "email": "memburey1@list-manage.com",
+    "gender": "Female"
+  },
+  {
+    "id": 3,
+    "name": "Hedwig Goulbourne",
+    "job": "Senior Sales Associate",
+    "email": "hgoulbourne2@uiuc.edu",
+    "gender": "Male"
+  },
+  {
+    "id": 4,
+    "name": "Ricky Dorr",
+    "job": "Computer Systems Analyst I",
+    "email": "rdorr3@latimes.com",
+    "gender": "Female"
+  },
+  {
+    "id": 5,
+    "name": "Lawry Whaites",
+    "job": "Environmental Specialist",
+    "email": "lwhaites4@senate.gov",
+    "gender": "Male"
+  },
+  {
+    "id": 6,
+    "name": "Haleigh Broggelli",
+    "job": "Accounting Assistant IV",
+    "email": "hbroggelli5@fastcompany.com",
+    "gender": "Male"
+  },
+  {
+    "id": 7,
+    "name": "Benton Darker",
+    "job": "Physical Therapy Assistant",
+    "email": "bdarker6@tamu.edu",
+    "gender": "Female"
+  },
+  {
+    "id": 8,
+    "name": "Estella Frye",
+    "job": "Quality Control Specialist",
+    "email": "efrye7@cdc.gov",
+    "gender": "Male"
+  },
+  {
+    "id": 9,
+    "name": "Constantine Mattea",
+    "job": "Desktop Support Technician",
+    "email": "cmattea8@webnode.com",
+    "gender": "Female"
+  },
+  {
+    "id": 10,
+    "name": "Benny Korda",
+    "job": "Payment Adjustment Coordinator",
+    "email": "bkorda9@icq.com",
+    "gender": "Female"
+  }
+]
