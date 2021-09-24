@@ -287,6 +287,41 @@
 
     Ta thêm vào attribute `th:checked="${isMale}"` trong tag `<input>`: input này sẽ có thêm attribute checked nếu giá trị isMale là true.
 
+- Tag `<form>` sau khi sửa đổi sẽ như sau
+
+  ```html
+  <form th:action="@{/person/edit/{id}(id = ${editedPerson.id})}" th:object="${editedPerson}" method="POST">
+    <table class="table w-auto">
+      <tr>
+        <th>ID:</th>
+        <td><input type="number" disabled name="id" th:field="${editedPerson.id}"/></td>
+      </tr>
+      <tr>
+        <th>Name:</th>
+        <td><input type="text" required name="name" placeholder="Name of person" th:field="${editedPerson.name}"/></td>
+      </tr>
+      <tr>
+        <th>Job:</th>
+        <td><input type="text" required name="job" placeholder="Job title" th:field="${editedPerson.job}"/></td>
+      </tr>
+      <tr>
+        <th>Gender:</th>
+        <td>
+          <input class="form-check-input" th:checked="${isMale}" required type="radio" name="gender" value="Male">Male</input>
+          &nbsp;&nbsp;&nbsp;
+          <input class="form-check-input" th:checked="${!isMale}" required type="radio" name="gender" value="Female">Female</input>
+        </td>
+      </tr>
+      <tr>
+        <th>Email:</th>
+        <td><input type="email" required name="email" placeholder="Email address"  th:field="${editedPerson.email}"/></td>
+      </tr>
+    </table>
+    <br />
+    <button type="sumbit">Submit</button>
+  </form>
+  ```
+
 - Bước tiếp theo, ta xử lý lệnh POST của http request `/person/edit/{id}`
 
   - Tại interface `DAO`
