@@ -7,6 +7,7 @@
 - [Khởi tạo](#p1)
 - [Thêm phần tử](#p2)
 - [Sửa phần tử](#p3)
+- [Xóa phần tử](#p4)
 
 ## Khởi tạo
 
@@ -321,7 +322,7 @@
 
 ## Xóa phần tử
 
-<a id = "p3"></a>
+<a id = "p4"></a>
 
 - Tạo ra button delete với http request `/person/delete/{id}` tại trang `peopleList.html`
 
