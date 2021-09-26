@@ -6,6 +6,7 @@
 
 - [Phần render Web của Thymeleaf](#p1)
 - [Phần controller](#p2)
+- [Xử lý logic backend trả kết quả](#p3)
 
 ## Phần render Web của Thymeleaf
 

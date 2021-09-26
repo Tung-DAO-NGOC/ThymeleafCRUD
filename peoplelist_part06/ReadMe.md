@@ -5,6 +5,9 @@
 ## Mục lục
 
 - [Dependency sử dụng](#p1)
+- [Khai báo Bean Validation ở model](#p2)
+- [Render tại trang Web với Thymeleaf](#p3)
+- [Xử lý tại controller](#p4)
 
 ## Dependency sử dụng
 
@@ -71,7 +74,7 @@
 
 - Trong form này, ta sẽ không xác định từng thuộc tính của `newPerson` bằng attribute `th:field`. Hoàn toàn có thể thay thế bằng attribute `name` như bình thường
 
-- `th:if="${#fields.hasErrors('name')}"` dùng để kiểm tra liệu thông tin nhập vào có lỗi không, nếu có lỗi thì bắt đầu render thẻ thẻ `td` chứa nó
+- `th:if="${#fields.hasErrors('name')}"` dùng để kiểm tra liệu thông tin nhập vào có lỗi không, nếu có lỗi thì bắt đầu render thẻ `td` có attribute này
 
 - `th:errors="*{name}"` dùng để in ra loại lỗi tương ứng phát hiện, với nội dung đã được ghi ở trong phần `message` ở Bean Validation.
 
@@ -79,7 +82,7 @@
 
 ## Xử lý tại controller
 
-<a id = "p3"></a>
+<a id = "p4"></a>
 
 - Ta sẽ cần một method để sử lý POST method với http request `/person/add`.
 
@@ -99,4 +102,4 @@
 - Giải thích ý nghĩa
   - Với object `newPerson` được gửi về, ta cần kiểm tra tính đúng đắn của thông tin bằng cách khai báo thêm annotation `@Valid` ngay trước `@ModelAttribute` của object gửi kèm trong http request, cùng với `BindingResult` để chứa các lỗi có thể xảy ra
   - Trong trường hợp có lỗi `result.hasErrors()`, ta sẽ trả về lại trang `personForm.html` để người dùng khởi tạo lại. Câu lệnh `model.addAttribute("newPerson", newPerson);` để render lại những gì người dùng đã nhập vào trước đó (không sử dụng câu lệnh này thì các trường trong trang `personForm.html` đều sẽ trắng)
-  - Nếu không có lỗi thì ta thêm object vào list, và gửi lại redirect một GET request `/person/list` về controller xử lý.
+  - Nếu không có lỗi thì ta thêm object vào list, và redirect một GET request `/person/list` về controller xử lý.
