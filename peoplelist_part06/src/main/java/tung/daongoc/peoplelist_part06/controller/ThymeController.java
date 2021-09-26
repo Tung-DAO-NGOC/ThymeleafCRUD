@@ -37,13 +37,13 @@ public class ThymeController {
     }
 
     @PostMapping("/person/add")
-    public String addPerson(@Valid @ModelAttribute("newPerson") Person newPerson, BindingResult result) {
+    public String addPerson(@Valid @ModelAttribute("newPerson") Person newPerson, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("newPerson", newPerson);
             return ("personForm");
         } else {
             personDAO.add(newPerson);
             return "redirect:/person/list";
         }
-
     }
 }
