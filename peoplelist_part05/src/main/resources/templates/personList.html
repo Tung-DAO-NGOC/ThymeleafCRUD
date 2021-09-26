@@ -1,0 +1,33 @@
+<html>
+  <head th:replace="template::header('Home Page')"></head>
+  <body>
+    <nav th:replace="template::menu"></nav>
+    <div th:replace="template::body-blank"></div>
+    <div class="content" align="center">
+      <br />
+      <h1>List of Workers</h1>
+      <br />
+      <table class="table table-striped w-auto table-hover">
+        <thead class="thead bg-success text-white">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Job</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr th:each="person:${personList}">
+            <td th:text="${person.id}">ID</td>
+            <td th:text="${person.name}">Name</td>
+            <td th:text="${person.age}">Age</td>
+            <td th:text="${person.job}">Job</td>
+            <td th:text="${person.salary}">Salary</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <footer th:replace="template::footer"></footer>
+</html>

@@ -1,0 +1,61 @@
+<html>
+  <head th:replace="template::header('Home Page')"></head>
+  <body>
+    <nav th:replace="template::menu"></nav>
+    <div th:replace="template::body-blank"></div>
+    <div class="content" align="center">
+      <h1>Hello world</h1>
+      <br />
+      <form th:action="@{/person/sort}" method="POST">
+        <table class="table w-auto">
+          <div th:object="${keyword}">
+            <tr>
+              <th>Keyword</th>
+              <td>
+                <input type="text" name="keyword" th:value="${keyword}" placeholder="Your keyword here" />
+              </td>
+            </tr>
+          </div>
+          <div th:object="${sort}">
+            <tr>
+              <th>Sort by</th>
+              <td>
+                <select name="sort">
+                  <option th:selected="${#strings.equals(sort, '')}" value="">-- Select an Option --</option>
+                  <option th:selected="${#strings.equals(sort, 'jobInc')}" value="jobInc">Job (A - Z)</option>
+                  <option th:selected="${#strings.equals(sort, 'jobDec')}" value="jobDec">Job (Z - A)</option>
+                  <option th:selected="${#strings.equals(sort, 'ageInc')}" value="ageInc">Age by Increase</option>
+                  <option th:selected="${#strings.equals(sort, 'ageDec')}" value="ageDec">Age by Decrease</option>
+                </select>
+              </td>
+            </tr>
+          </div>
+        </table>
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+      <br />
+      <table class="table table-striped w-auto table-hover">
+        <thead class="thead bg-success text-white">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Job</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr th:each="person:${personList}">
+            <td th:text="${person.id}">ID</td>
+            <td th:text="${person.name}">Name</td>
+            <td th:text="${person.age}">Age</td>
+            <td th:text="${person.job}">Job</td>
+            <td th:text="${person.salary}">Salary</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <footer th:replace="template::footer"></footer>
+</html>

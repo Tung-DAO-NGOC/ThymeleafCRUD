@@ -1,0 +1,57 @@
+<html>
+  <head th:replace="template::header('Form')"></head>
+  <body>
+    <nav th:replace="template::menu"></nav>
+    <div th:replace="template::body-blank"></div>
+    <div class="content" align="center">
+      <br />
+      <h1>Add new Person</h1>
+      <br />
+      <form th:action="@{/person/add}" th:object="${newPerson}" method="post">
+        <table class="table w-auto">
+          <tr>
+            <th>Name:</th>
+            <td><input type="text" th:field="*{name}" placeholder="Name of person" /></td>
+            <td th:if="${#fields.hasErrors('name')}">
+              <span class="text-danger" th:errors="*{name}"> Name Error</span>
+            </td>
+          </tr>
+          <tr>
+            <th>Age:</th>
+            <td><input type="number" th:field="*{age}" placeholder="Age of person" /></td>
+            <td th:if="${#fields.hasErrors('age')}">
+              <span class="text-danger" th:errors="*{age}"></span>
+            </td>
+          </tr>
+          <tr>
+            <th>Job:</th>
+            <td>
+              <select th:field="*{job}">
+                <option selected value="">--Select One--</option>
+                <option value="Developer">Developer</option>
+                <option value="Banker">Banker</option>
+                <option value="Taxi Driver">Taxi Driver</option>
+                <option value="Engineer">Engineer</option>
+                <option value="Editor">Editor</option>
+                <option value="Actor">Actor</option>
+              </select>
+            </td>
+            <td th:if="${#fields.hasErrors('job')}">
+              <span class="text-danger" th:errors="${newPerson.job}"></span>
+            </td>
+          </tr>
+          <tr>
+            <th>Email:</th>
+            <td><input type="text" th:field="*{email}" placeholder="Email address" /></td>
+            <td th:if="${#fields.hasErrors('email')}">
+              <span class="text-danger" th:errors="${newPerson.email}"></span>
+            </td>
+          </tr>
+        </table>
+        <br />
+        <button type="sumbit">Submit</button>
+      </form>
+    </div>
+  </body>
+  <footer th:replace="template::footer"></footer>
+</html>

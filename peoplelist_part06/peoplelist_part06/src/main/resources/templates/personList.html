@@ -1,0 +1,35 @@
+<html>
+  <head th:replace="template::header('List of people')"></head>
+  <body>
+    <nav th:replace="template::menu"></nav>
+    <div th:replace="template::body-blank"></div>
+    <div class="content" align="center">
+      <br />
+      <h1>List of people</h1>
+      <br />
+      <table class="table table-striped w-auto">
+        <thead class="thead bg-success text-white">
+          <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Job</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr th:each="person, iStat:${personList}">
+            <td th:text="${iStat.count}">ID</td>
+            <td th:text="${person.name}">Name</td>
+            <td th:text="${person.age}">Age</td>
+            <td th:text="${person.job}">Job</td>
+            <td th:text="${person.email}">Email</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <a href="#" th:href=@{/person/add}><button type="button" class="btn btn-primary">Add New Person</button></a>
+    </div>
+  </body>
+  <footer th:replace="template::footer"></footer>
+</html>
