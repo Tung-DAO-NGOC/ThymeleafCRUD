@@ -1,0 +1,38 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.navbar-brand {
+	padding-left: 1rem;
+}
+
+.navbar {
+	width: 100vw;
+	font-size: 1.5rem;
+	padding: 0;
+}
+
+li {
+	margin: 0 0.5rem;
+	padding: 0.5rem;
+	font-weight: 600;
+}
+
+li.active {
+	background: #46c420;
+}
+
+.content {
+	margin: auto;
+}
+
+form.view-choice {
+	font-size: 1.7rem;
+	font-weight: 700;
+}
+
+div.view {
+	font-size: 150%;
+}

@@ -1,0 +1,24 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+.nav {
+	text-align: center;
+	color: red;
+}
+
+.active {
+	background: rgb(55, 163, 96);
+	border-radius: 5px;
+}
+
+.blank {
+	padding-top: 40px;
+}
+
+h1.content {
+	width: fit-content;
+	background: coral;
+	margin: auto;
+}

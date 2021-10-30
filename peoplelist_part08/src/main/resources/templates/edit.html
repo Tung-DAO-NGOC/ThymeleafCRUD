@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html
+	lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}"
+>
+	<head>
+		<title th:text="|Editing ${person.firstName} ${person.lastName}|">Editing</title>
+	</head>
+	<body>
+		<section layout:fragment="content">
+			<br />
+			<br />
+			<div align="center" class="view">
+				<br />
+				<h1>Personal Infomation</h1>
+				<br />
+				<form
+					th:action="@{/edit_{id}(id = ${person.id})}"
+					method="post"
+					th:object="${person}"
+					enctype="multipart/form-data"
+				>
+					<table class="table table-hover w-auto">
+						<thead class="bg-success text-white text-center">
+							<tr>
+								<th>Field</th>
+								<th>Info</th>
+							</tr>
+						</thead>
+						<tbody>
+							<input class="visually-hidden" type="number" th:field="*{id}" />
+							<tr>
+								<td class="text-capitalize fw-bold">First name</td>
+								<td>
+									<input style="padding: 0.25rem; width: 100%" type="text" th:field="*{firstName}" />
+									<div th:if="${#fields.hasErrors('firstName')}">
+										<span class="text-danger" th:errors="*{firstName}"> Name Error</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-capitalize fw-bold">Last Name</td>
+								<td>
+									<input style="padding: 0.25rem; width: 100%" type="text" th:field="*{lastName}" />
+									<div th:if="${#fields.hasErrors('lastName')}">
+										<span class="text-danger" th:errors="*{lastName}"> Name Error</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-capitalize fw-bold">Email</td>
+								<td>
+									<input style="padding: 0.25rem; width: 100%" type="text" th:field="*{email}" />
+									<div th:if="${#fields.hasErrors('email')}">
+										<span class="text-danger" th:errors="*{email}"> Name Error</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-capitalize fw-bold">Gender</td>
+								<td>
+									<input style="padding: 0.25rem; width: 100%" type="text" th:field="*{gender}" />
+									<div th:if="${#fields.hasErrors('gender')}">
+										<span class="text-danger" th:errors="*{gender}"> Name Error</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-capitalize fw-bold">Age</td>
+								<td>
+									<input style="padding: 0.25rem; width: 100%" type="text" th:field="*{age}" />
+									<div th:if="${#fields.hasErrors('age')}">
+										<span class="text-danger" th:errors="*{age}"> Name Error</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-capitalize fw-bold">Job</td>
+								<td>
+									<input style="padding: 0.25rem; width: 100%" type="text" th:field="*{job}" />
+									<div th:if="${#fields.hasErrors('job')}">
+										<span class="text-danger" th:errors="*{job}"> Name Error</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="text-capitalize fw-bold">Avatar</td>
+								<td class="avatar">
+									<input class="visually-hidden" type="text" th:field="*{avatar}" />
+									<img
+										th:unless="${hasAvatar}"
+										th:src="@{img/avatar.png}"
+										alt="avatar"
+										width="200px"
+										height="200px"
+									/>
+									<img
+										th:if="${hasAvatar}"
+										th:src="|data:image/jpeg;base64,${person.avatarBase64}|"
+										alt="avatar"
+										width="200px"
+										height="200px"
+									/>
+									<br />
+									<br />
+									<input type="file" th:field="*{avatarUpload}" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<button type="submit" class="btn btn-warning btn-lg">Submit</button>
+					<a th:href="@{/list}"><button type="button" class="btn btn-primary btn-lg">Return</button></a>
+				</form>
+			</div>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html
+	lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}"
+>
+	<head>
+		<title th:text="${person.fullName}">title_name</title>
+	</head>
+	<body>
+		<section layout:fragment="content">
+			<br />
+			<br />
+			<div align="center" class="view">
+				<br />
+				<h1>Personal Infomation</h1>
+				<br />
+				<table class="table table-hover w-auto">
+					<thead class="bg-success text-white text-center">
+						<tr>
+							<th>Field</th>
+							<th>Info</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="text-capitalize fw-bold">Full Name</td>
+							<td><span th:text="${person.fullName}"></span></td>
+						</tr>
+						<tr>
+							<td class="text-capitalize fw-bold">Email</td>
+							<td><span th:text="${person.email}"></span></td>
+						</tr>
+						<tr>
+							<td class="text-capitalize fw-bold">Gender</td>
+							<td><span th:text="${person.gender}"></span></td>
+						</tr>
+						<tr>
+							<td class="text-capitalize fw-bold">Age</td>
+							<td><span th:text="${person.age}"></span></td>
+						</tr>
+						<tr>
+							<td class="text-capitalize fw-bold">Job</td>
+							<td><span th:text="${person.job}"></span></td>
+						</tr>
+						<tr>
+							<td class="text-capitalize fw-bold">Avatar</td>
+							<td class="avatar">
+								<img
+									th:unless="${hasAvatar}"
+									th:src="@{img/avatar.png}"
+									alt="avatar"
+									width="200px"
+									height="200px"
+								/>
+
+								<img
+									th:if="${hasAvatar}"
+									th:src="|data:image/jpeg;base64,${person.avatarBase64}|"
+									alt="avatar"
+									width="200px"
+									height="200px"
+								/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<a th:href="@{/list}"><button type="button" class="btn btn-primary btn-lg">Return</button></a>
+				&nbsp;&nbsp;
+				<a href="#" th:href="@{/edit_{id}(id = ${person.id})}"
+					><button type="button" class="btn btn-warning btn-lg">Edit</button></a
+				>
+			</div>
+		</section>
+	</body>
+</html>

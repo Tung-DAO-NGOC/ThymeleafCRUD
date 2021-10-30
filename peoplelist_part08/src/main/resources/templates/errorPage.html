@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html
+	lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}"
+>
+	<head>
+		<title>Error Page</title>
+	</head>
+	<body>
+		<section layout:fragment="content">
+			<div align="center">
+				<br />
+				<h1 style="font-size: 3rem">Error!</h1>
+				<br />
+				<p style="font-size: 2rem; font-weight: 600" th:text="${errorCause}"></p>
+				<br />
+				<p style="font-size: 2rem; font-weight: 600" th:text="${errorMes}"></p>
+			</div>
+		</section>
+	</body>
+</html>
