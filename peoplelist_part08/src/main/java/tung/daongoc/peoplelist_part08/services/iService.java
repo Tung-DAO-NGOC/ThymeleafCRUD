@@ -10,4 +10,8 @@ public interface iService<T> {
     T getByID(Long id);
 
     void update(Long id, T object);
+
+    void add(T object);
+
+    void delete(Long id);
 }

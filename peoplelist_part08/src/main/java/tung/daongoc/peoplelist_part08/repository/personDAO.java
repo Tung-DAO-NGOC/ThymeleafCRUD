@@ -14,7 +14,7 @@ import tung.daongoc.peoplelist_part08.person.PersonEntity;
 public class personDAO implements DAO<PersonEntity> {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-
+    private final String TABLENAME = "person";
     private final RowMapper<PersonEntity> rowMapper = (resultSet, rowNum) -> {
         PersonEntity personEntity = PersonEntity.builder()
                 .setId(resultSet.getLong("id"))
@@ -31,19 +31,19 @@ public class personDAO implements DAO<PersonEntity> {
 
     @Override
     public List<PersonEntity> list() {
-        String sql = "SELECT * FROM person";
+        String sql = "SELECT * FROM " + TABLENAME;
         return jdbcTemplate.query(sql, rowMapper);
     }
 
     @Override
     public java.util.List<PersonEntity> list(Integer limit, Integer offset) {
-        String sql = "SELECT * FROM person LIMIT ?, ?";
+        String sql = "SELECT * FROM " + TABLENAME + " LIMIT ?, ?";
         return jdbcTemplate.query(sql, rowMapper, offset, limit);
     }
 
     @Override
     public PersonEntity getID(Long id) throws DataAccessException {
-        String sql = "SELECT * FROM person WHERE id = ?";
+        String sql = "SELECT * FROM " + TABLENAME + " WHERE id = ?";
         PersonEntity personEntity = jdbcTemplate.queryForObject(sql, rowMapper, id);
         return personEntity;
     }
@@ -51,13 +51,27 @@ public class personDAO implements DAO<PersonEntity> {
     @Override
     public void update(Long id, PersonEntity object) {
         String sql =
-                "UPDATE person SET firstName = ?, lastName = ?, email = ?, gender = ?, age = ?, job = ?, avatar = ? WHERE id = ?";
-        int update = jdbcTemplate.update(sql, object.getFirstName(), object.getLastName(),
+                "UPDATE " + TABLENAME
+                        + " SET firstName = ?, lastName = ?, email = ?, gender = ?, age = ?, job = ?, avatar = ? WHERE id = ?";
+        jdbcTemplate.update(sql, object.getFirstName(), object.getLastName(),
                 object.getEmail(), object.getGender(), object.getAge(), object.getJob(),
                 object.getAvatar(), id);
-        if (update == 1) {
-            System.out.println("Upload success");
-        }
+    }
+
+    @Override
+    public void add(PersonEntity object) {
+        String sql =
+                "INSERT INTO " + TABLENAME
+                        + " (firstName,lastName,email,gender,age,job,avatar) values(?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, object.getFirstName(), object.getLastName(),
+                object.getEmail(), object.getGender(), object.getAge(), object.getJob(),
+                object.getAvatar());
+    }
+
+    @Override
+    public void delete(Long id) {
+        String sql = "DELETE FROM " + TABLENAME + " WHERE id = ?";
+        jdbcTemplate.update(sql, id);
     }
 
 }

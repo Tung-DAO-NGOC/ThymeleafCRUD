@@ -6,7 +6,7 @@
 	layout:decorate="~{layout}"
 >
 	<head>
-		<title th:text="|Editing ${person.firstName} ${person.lastName}|">Editing</title>
+		<title>Add Person</title>
 	</head>
 	<body>
 		<section layout:fragment="content">
@@ -14,14 +14,9 @@
 			<br />
 			<div align="center" class="view">
 				<br />
-				<h1>Personal Infomation</h1>
+				<h1>Adding New Person</h1>
 				<br />
-				<form
-					th:action="@{/edit_{id}(id = ${person.id})}"
-					method="post"
-					th:object="${person}"
-					enctype="multipart/form-data"
-				>
+				<form th:action="@{/add}" method="post" th:object="${newPerson}" enctype="multipart/form-data">
 					<table class="table table-hover w-auto">
 						<thead class="bg-success text-white text-center">
 							<tr>
@@ -30,7 +25,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<input class="visually-hidden" type="number" th:field="*{id}" />
+							<!-- <input class="visually-hidden" type="number" th:field="*{id}" /> -->
 							<tr>
 								<td class="text-capitalize fw-bold">First name</td>
 								<td>
@@ -98,7 +93,7 @@
 									/>
 									<img
 										th:if="${hasAvatar}"
-										th:src="|data:image/jpeg;base64,${person.avatarBase64}|"
+										th:src="|data:image/jpeg;base64,*{avatarBase64}|"
 										alt="avatar"
 										width="200px"
 										height="200px"
@@ -111,7 +106,6 @@
 						</tbody>
 					</table>
 					<button type="submit" class="btn btn-warning btn-lg">Submit</button>
-					<a th:href="@{/list}"><button type="button" class="btn btn-primary btn-lg">Return</button></a>
 				</form>
 			</div>
 		</section>

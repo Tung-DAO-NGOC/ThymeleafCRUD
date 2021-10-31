@@ -23,8 +23,18 @@
 					<li class="nav-item" th:classappend="${active == 'list' ? 'active': ''}">
 						<a class="nav-link" th:href="@{/list}"> List People</a>
 					</li>
+					<li class="nav-item" th:classappend="${active == 'add' ? 'active': ''}">
+						<a class="nav-link" th:href="@{/add}"> Add Person</a>
+					</li>
 					<li th:if="${active == 'view' }" class="nav-item" th:classappend="${active == 'view' ? 'active': ''}">
 						<a class="nav-link" th:href="@{#}"> View Data</a>
+					</li>
+					<li
+						th:if="${active == 'delete' }"
+						class="nav-item"
+						th:classappend="${active == 'delete' ? 'active': ''}"
+					>
+						<a class="nav-link" th:href="@{#}"> Delete Data</a>
 					</li>
 				</ul>
 			</nav>

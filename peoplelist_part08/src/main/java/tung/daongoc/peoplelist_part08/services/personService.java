@@ -16,7 +16,7 @@ public class personService implements iService<PersonModel> {
         DAO<PersonEntity> personDAO;
 
         private List<PersonModel> listMappingEntityToModel(List<PersonEntity> list) {
-                return list.stream()
+                List<PersonModel> returnList = list.stream()
                                 .map(personEntity -> PersonModel.builder()
                                                 .setId(personEntity.getId())
                                                 .setFirstName(personEntity.getFirstName())
@@ -28,6 +28,8 @@ public class personService implements iService<PersonModel> {
                                                 .setAvatar(personEntity.getAvatar())
                                                 .build())
                                 .collect(Collectors.toList());
+                returnList.forEach(item -> item.setFullName());
+                return returnList;
         }
 
         private PersonModel objectMappingEntityToModel(PersonEntity entity) {
@@ -41,6 +43,7 @@ public class personService implements iService<PersonModel> {
                                 .setJob(entity.getJob())
                                 .setAvatar(entity.getAvatar())
                                 .build();
+                personModel.setFullName();
                 return personModel;
         }
 
@@ -81,10 +84,23 @@ public class personService implements iService<PersonModel> {
 
         @Override
         public void update(Long id, PersonModel model) {
-                if (model.getAvatar().length == 0) {
+                if (model.getAvatar() != null && model.getAvatar().length == 0) {
                         model.setAvatar(null);
                 }
                 personDAO.update(id, objectMappingModelToEntity(model));
+        }
+
+        @Override
+        public void add(PersonModel personModel) {
+                if (personModel.getAvatar().length == 0) {
+                        personModel.setAvatar(null);
+                }
+                personDAO.add(objectMappingModelToEntity(personModel));
+        }
+
+        @Override
+        public void delete(Long id) {
+                personDAO.delete(id);
         }
 
 

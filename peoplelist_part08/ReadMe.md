@@ -433,6 +433,7 @@
    ```
 
 -  Sau đó dùng String Base64 tạo thành để render thành ảnh :
+
    ```html
    <img
    	th:if="${hasAvatar}"
@@ -443,6 +444,104 @@
    />
    ```
 
+-  Thêm Dependency validation
+
+   ```xml
+   	<dependency>
+   		<groupId>org.springframework.boot</groupId>
+   		<artifactId>spring-boot-starter-validation</artifactId>
+   	</dependency>
+   ```
+
+-  Do personModel là object tương tác ở controller, nên quy định valid ở đây. Valid nên phù hợp với kiểu dữ liệu quy định tại database
+
+   Kiểu dữ liệu database
+
+   ```sql
+       id  BIGINT UNSIGNED NOT NULL AUTO_INCREMENT ,
+   firstName VARCHAR(20) NOT NULL,
+   lastName VARCHAR(50) NOT NULL,
+   email VARCHAR(50) NOT NULL,
+   gender VARCHAR(20),
+    age INT,
+   job VARCHAR(50),
+   avatar BLOB,
+   ```
+
+   Validation cho các trường của object personModel
+
+   ```java
+    @NotBlank(message = "First Name is required")
+    @Size(max = 20, message = "First Name must less than 20 characters")
+    private String firstName;
+
+    @NotBlank(message = "First Name is required")
+    @Size(max = 50, message = "Last Name must less than 50 characters")
+    private String lastName;
+
+    @NotBlank(message = "Email is required")
+    @Size(max = 50, message = "Email must less than 50 characters")
+    @Pattern(regexp = ".+@.+\\..+", message = "Please provide a valid email address")
+    private String email;
+
+    @Size(max = 20, message = "Gender must less than 20 characters")
+    private String gender;
+
+    @Size(max = 20, message = "Job title must less than 50 characters")
+    private String job;
+
+    @Min(value = 18, message = "Age must be larger than 18")
+    private int age;
+   ```
+
+-  Tại trang edit, render ra lỗi nếu xuất hiện
+
+   ```html
+   <div th:if="${#fields.hasErrors('firstName')}">
+   	<span class="text-danger" th:errors="*{firstName}"> Name Error</span>
+   </div>
+   <!--Các phần còn lại render tương tự-->
+   ```
+
+-  Sửa lại phần xử lý post request của edit
+
+   ```java
+   @PostMapping("/edit_{id}")
+    public String postEditPage(@Valid @ModelAttribute(value = "person") PersonModel personModel,
+            BindingResult br, Model model)
+            throws IOException {
+        String getReturn;
+        boolean hasAvatar = false;
+        if (br.hasErrors()) {
+            if (personModel.getAvatar() != null) {
+                hasAvatar = true;
+                personModel.setAvatarBase64(Base64.getEncoder().encodeToString(
+                        personModel.getAvatar()));
+            }
+            model.addAttribute("person", personModel);
+            model.addAttribute("active", "view");
+            model.addAttribute("hasAvatar", hasAvatar);
+            return "edit";
+        } else {
+            getReturn = "redirect:" + "/view_" + String.valueOf(personModel.getId());
+            if (!personModel.getAvatarUpload().isEmpty()) {
+                personModel.setAvatar(personModel.getAvatarUpload().getBytes());
+            }
+            personService.update(personModel.getId(), personModel);
+            return getReturn;
+        }
+    }
+   ```
+
 ## Bước 8: Add và delete ID
 
-## Bước 9: Search
+-  Add: làm tương tự edit
+
+-  Delete: phần xử lý với database như sau
+
+   ```java
+       public void delete(Long id) {
+        String sql = "DELETE FROM " + TABLENAME + " WHERE id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+   ```

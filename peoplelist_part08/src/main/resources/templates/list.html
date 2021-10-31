@@ -12,6 +12,9 @@
 		<section layout:fragment="content">
 			<br />
 			<div align="center">
+				<div th:if="${addNew}">
+					<h1>Adding new data sucess!</h1>
+				</div>
 				<h1>People List</h1>
 				<br />
 				<form class="view-choice" th:action="@{/list}" method="get" th:object="${view}">
